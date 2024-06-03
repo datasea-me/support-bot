@@ -20,6 +20,7 @@ class Settings(BaseSettings):
     POSTGRES_USER: str
     POSTGRES_PASSWORD: str
     START_MESSAGE: str
+    MESSAGE_THREAD_ID: int
 
     class Config:
         env_file = ".env"

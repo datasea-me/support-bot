@@ -24,6 +24,7 @@ async def send_message_to_group(message: Message, bot: Bot):
             f'{message.text}\n\n'
             f'Тикет: #id{message.from_user.id}'
         ),
+        message_thread_id=settings.MESSAGE_THREAD_ID, 
         parse_mode='HTML'
     )
     session_generator = get_async_session()
