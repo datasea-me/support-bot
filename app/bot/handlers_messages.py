@@ -43,9 +43,9 @@ async def send_message_to_group(message: Message, bot: Bot):
 
 @router.message(SupportedMediaFilter(), F.chat.type == 'private')
 async def supported_media(message: Message):
-    if message.caption and len(message.caption) > 1000:
+    if message.caption and len(message.caption) > 30000:
         return await message.reply(text='Слишком длинное описание. Описание '
-                                        'не может быть больше 1000 символов')
+                                        'не может быть больше 30000 символов')
     await message.copy_to(
         chat_id=settings.GROUP_ID,
         caption=((message.caption or "") +
