@@ -1,16 +1,15 @@
 from datetime import datetime
-from typing import Optional
 
 from pydantic import BaseModel, Field
 
 
 class UserBaseScheme(BaseModel):
     telegram_id: int
-    telegram_username: Optional[str] = Field(None, max_length=100)
-    is_banned: Optional[bool]
-    first_name: Optional[str] = Field(None, max_length=100)
-    last_name: Optional[str] = Field(None, max_length=100)
-    is_admin: Optional[bool] = Field(None)
+    telegram_username: str | None = Field(None, max_length=100)
+    is_banned: bool | None
+    first_name: str | None = Field(None, max_length=100)
+    last_name: str | None = Field(None, max_length=100)
+    is_admin: bool | None = Field(None)
 
 
 class UserCreateScheme(UserBaseScheme):

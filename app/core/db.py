@@ -1,7 +1,6 @@
-from sqlalchemy import Integer, TIMESTAMP, func
-from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
-from sqlalchemy.orm import declared_attr, declarative_base, sessionmaker, \
-    mapped_column
+from sqlalchemy import TIMESTAMP, Integer, func
+from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
+from sqlalchemy.orm import declarative_base, declared_attr, mapped_column, sessionmaker
 
 from app.core.config import settings
 
@@ -14,13 +13,13 @@ class PreBase:
         return cls.__name__.lower()
 
     id = mapped_column(Integer, primary_key=True)
-    created_at = mapped_column(TIMESTAMP,
-                               server_default=func.current_timestamp(),
-                               nullable=False)
-    updated_at = mapped_column(TIMESTAMP,
-                               server_default=func.current_timestamp(),
-                               nullable=False,
-                               onupdate=func.current_timestamp())
+    created_at = mapped_column(TIMESTAMP, server_default=func.current_timestamp(), nullable=False)
+    updated_at = mapped_column(
+        TIMESTAMP,
+        server_default=func.current_timestamp(),
+        nullable=False,
+        onupdate=func.current_timestamp(),
+    )
 
 
 Base = declarative_base(cls=PreBase)

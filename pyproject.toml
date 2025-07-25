@@ -1,0 +1,58 @@
+[project]
+name = "support-bot"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "aiogram==3.4.1",
+    "aiohttp~=3.9.0",
+    "alembic~=1.10.2",
+    "asyncpg>=0.30.0",
+    "fastapi~=0.109.2",
+    "pydantic<2.6",
+    "pydantic-settings~=2.2.1",
+    "python-dateutil~=2.8.2",
+    "python-dotenv>=0.21.0",
+    "ruff>=0.12.5",
+    "sqlalchemy~=2.0.7",
+]
+
+
+
+[tool.ruff]
+target-version = "py312"
+line-length = 120
+lint.select = ["ALL"]
+lint.ignore = [
+    "D1",      # Missing docstring in ***
+    "D203",    # One blank line before class
+    "D212",    # Multi line summary first line
+    "FBT001",  # Boolean-typed positional argument in function definition
+    "FBT002",  # Boolean default positional argument in function definition
+    "INP001",  # Part of an implicit namespace package
+    "ISC001",
+    "COM812",
+    "CPY001",
+    "RUF001",
+    "RUF003",
+]
+exclude = [
+    "alembic/env.py",
+]
+preview = true
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101", "ANN201", "S311"]
+"scripts/*" = ["ASYNC230", "BLE001", "ERA001", "PTH123", "T201"]
+"profession_consultant_tester.py" = ["T201"]
+"interview_tester.py" = ["T201"]
+
+[tool.ruff.lint.flake8-quotes]
+inline-quotes = "single"
+
+
+[tool.ruff.format]
+quote-style = "single"
+indent-style = "space"
+exclude = ["alembic/env.py"]

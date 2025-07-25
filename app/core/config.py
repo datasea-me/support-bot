@@ -1,17 +1,15 @@
-import os
-from typing import Optional
 
-from pydantic_settings import BaseSettings
 from dotenv import load_dotenv
-from typing import Optional
+from pydantic_settings import BaseSettings
 
 load_dotenv()
+
 
 class Settings(BaseSettings):
     TELEGRAM_TOKEN: str
     GROUP_ID: str
-    WEBHOOK_DOMAIN: Optional[str] = None
-    WEBHOOK_PATH: Optional[str] = None
+    WEBHOOK_DOMAIN: str | None = None
+    WEBHOOK_PATH: str | None = None
     APP_HOST: str
     APP_PORT: int
     DATABASE_URL: str
@@ -23,7 +21,8 @@ class Settings(BaseSettings):
     MESSAGE_THREAD_ID: int
 
     class Config:
-        env_file = ".env"
-        env_file_encoding = "utf-8"
+        env_file = '.env'
+        env_file_encoding = 'utf-8'
+
 
 settings = Settings()

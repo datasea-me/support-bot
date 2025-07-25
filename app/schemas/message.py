@@ -1,14 +1,13 @@
 from datetime import datetime
-from typing import Optional
 
 from pydantic import BaseModel
 
 
 class MessageBaseScheme(BaseModel):
     telegram_user_id: int
-    text: Optional[str]
-    attachments: Optional[bool]
-    answer_to_user: Optional[int]
+    text: str | None
+    attachments: bool | None
+    answer_to_user: int | None
 
 
 class MessageCreateScheme(MessageBaseScheme):
