@@ -26,7 +26,7 @@ async def handle_user_request(message: Message, bot: Bot):
     if message.content_type == 'text':
         await bot.send_message(
             chat_id=settings.GROUP_ID,
-            text=(f'{message.text}\n\nИмя: {message.from_user.full_name}\nUsername: #id{message.from_user.id}'),
+            text=(f'{message.text}\n\nИмя: {message.from_user.full_name}\nUsername: #id{message.from_user.username}'),
             message_thread_id=settings.MESSAGE_THREAD_ID,
             parse_mode='HTML',
         )
@@ -34,7 +34,7 @@ async def handle_user_request(message: Message, bot: Bot):
         await message.copy_to(
             chat_id=settings.GROUP_ID,
             message_thread_id=settings.MESSAGE_THREAD_ID,
-            caption=((message.caption or '') + f'Имя: {message.from_user.full_name}\nUsername: #id{message.from_user.id}'),
+            caption=((message.caption or '') + f'Имя: {message.from_user.full_name}\nUsername: #id{message.from_user.username}'),
             parse_mode='HTML',
         )
 
