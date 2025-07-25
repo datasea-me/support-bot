@@ -56,7 +56,7 @@ async def handle_user_request(message: Message, bot: Bot):
 
     await crud_message.create(message_data, session)
 
-    await message.answer('Спасиибо за обращение! Мы передали ваш запрос в техподдержку, пожалуйста, ожидайте 😊')
+    await message.answer('Спасибо за обращение! Мы передали ваш запрос в техподдержку, пожалуйста, ожидайте 😊')
 
 
 @router.message(F.chat.id == int(settings.GROUP_ID), F.reply_to_message)
